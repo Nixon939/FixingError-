@@ -7,6 +7,21 @@ var panoramaOptionsGlobal2;
 var mapOptions1;
 var map;
 var position;
+var arrayAllSegments=[
+[58.13999139861917, 52.67337440069534],
+[58.14019605233681, 52.67281406716135],
+[58.1403468351264, 52.67257420053576],
+[58.14042703334976, 52.67247561552708],
+[58.1405110792562, 52.67239780432762],
+[58.14059993334332, 52.67233703195605],
+[58.14069049781854, 52.6722994083727],
+[58.14089212585665, 52.67230613573427],
+[58.14106899817907, 52.67220534563886],
+[58.14099568028652, 52.67182548559956],
+[58.1409573968007, 52.67150140441977],
+[58.14089870704209, 52.67099032135197],
+];
+var indexLocation =0;
 locationLat0 = 58.1399914;
 locationLng0 = 52.6733744;
 
@@ -62,6 +77,10 @@ function onClickNext() {
 	var panorama = new  google.maps.StreetViewPanorama(document.getElementById("pano"),panoramaOptionsGlobal1);
     map1.setStreetView(panorama);
 	console.log("clicked button: next");
+	console.log("indexLocation: "+indexLocation);
+	console.log("Lng: "+arrayAllSegments[indexLocation][1]);
+	console.log("Lat: "+arrayAllSegments[indexLocation][0]);
+	indexLocation++;
 	return false;
 }
 function onClickBack() {
