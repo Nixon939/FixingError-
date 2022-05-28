@@ -22,12 +22,12 @@ var arrayAllSegments=[
 [58.14089870704209, 52.67099032135197],
 ];
 var indexLocation =0;
-/*locationLat0 = 58.1399914;
+locationLat0 = 58.1399914;
 locationLng0 = 52.6733744;
 
 locationLat1 = 58.1408227;
 locationLng1 = 52.6763591;
-*/
+
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
@@ -37,8 +37,8 @@ function initMap() {
 
   function initialize() {
 	 
-    var glazov0 = new google.maps.LatLng(arrayAllSegments[0][0],arrayAllSegments[0][1]);
-	var glazov1 = new google.maps.LatLng(arrayAllSegments[1][0],arrayAllSegments[1][1]);
+    var glazov0 = new google.maps.LatLng(arrayAllSegments[indexLocation][0],arrayAllSegments[indexLocation][1]);
+	var glazov1 = new google.maps.LatLng(locationLat1, locationLng1);
     var mapOptions0 = {
       center: glazov0,
       zoom: 16,
@@ -74,13 +74,24 @@ function initMap() {
   
 
 function onClickNext() {
-	var panorama = new  google.maps.StreetViewPanorama(document.getElementById("pano"),panoramaOptionsGlobal1);
-   map1.setStreetView(panorama);
+	var glazov1 = new google.maps.LatLng(arrayAllSegments[indexLocation][0],arrayAllSegments[indexLocation][1]);
+	var panoramaOptions1 = {
+      position: glazov1,
+      pov: {
+        heading: 34,
+        pitch: 10,
+        zoom: 1
+      }
+    };
+	
+	var panorama = new  google.maps.StreetViewPanorama(document.getElementById("pano"),panoramaOptions1);
+    map1.setStreetView(panorama);
 	console.log("clicked button: next");
 	console.log("indexLocation: "+indexLocation);
 	console.log("Lng: "+arrayAllSegments[indexLocation][1]);
 	console.log("Lat: "+arrayAllSegments[indexLocation][0]);
 	indexLocation++;
+	
 	return false;
 }
 function onClickBack() {
